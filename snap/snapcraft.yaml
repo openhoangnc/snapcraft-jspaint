@@ -9,7 +9,8 @@ grade: stable
 confinement: strict
 
 architectures:
-  - build-on: [s390x, ppc64el, arm64, armhf, amd64, i386]
+  - build-on: [amd64]
+  # - build-on: [s390x, ppc64el, arm64, armhf, amd64, i386]
   
 apps:
   jspaint:
@@ -61,3 +62,29 @@ parts:
       - git
       - curl
       - unzip
+    stage-packages:
+      - libx11-xcb1
+      - libx11-6
+      - libxcomposite1
+      - libxcursor1
+      - libxdamage1
+      - libxext6
+      - libxfixes3
+      - libxi6
+      - libxrandr2
+      - libxrender1
+      - libxss1
+      - libxtst6
+      - libasound2
+      - libatk1.0-0
+      - libatk-bridge2.0-0
+      - libatspi2.0-0
+      - libcairo2
+      - libcups2
+      - libgdk-pixbuf2.0-0
+      - libgtk-3-0
+      - libnspr4
+      - libnss3
+      - libpango1.0-0
+      - libpangocairo-1.0-0
+      - libxcb1
