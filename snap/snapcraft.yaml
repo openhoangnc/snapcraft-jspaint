@@ -1,0 +1,64 @@
+name: jspaint
+adopt-info: jspaint
+summary: Classic MS Paint clone with extra features
+description: |
+  Classic MS Paint clone with extra features
+
+base: core18
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: [amd64]
+  # - build-on: [s390x, ppc64el, arm64, armhf, amd64, i386]
+  
+apps:
+  jspaint:
+    command: jspaint 
+    # desktop: $SNAP/jspaint.desktop
+    # environment:
+    #   DISABLE_WAYLAND: 1
+    #   GSETTINGS_SCHEMA_DIR: $SNAP/usr/share/glib-2.0/schemas
+    plugs:
+      - desktop
+      - desktop-legacy
+      - wayland
+      - unity7
+      - alsa
+      - avahi-observe
+      - browser-support
+      - camera
+      - cups-control
+      - gsettings
+      - home
+      - network
+      - opengl
+      - audio-playback
+      - screen-inhibit-control
+      - upower-observe
+parts:    
+  jspaint:
+    plugin: nil
+    override-build: |
+      set -eu
+      
+      # curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+      curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      apt install -y nodejs yarn
+
+      git clone https://github.com/1j01/jspaint.git --depth 1
+      cd jspaint
+      VERSION=$(jq . package.json | grep version | cut -d'"' -f4 | sed s'/v//' | head -n 1)
+      snapcraftctl set-version "$VERSION"
+           
+      yarn install
+      yarn run package
+      mv out/* o/
+      mv o/* $SNAPCRAFT_PART_INSTALL/
+      mv $SNAPCRAFT_PART_INSTALL/JS\ Paint $SNAPCRAFT_PART_INSTALL/jspaint
+    build-packages:
+      - jq
+      - git
+      - curl
+      - unzip
