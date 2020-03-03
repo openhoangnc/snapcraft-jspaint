@@ -55,7 +55,7 @@ parts:
            
       yarn install
       yarn run package
-      rm -rf o/ $SNAPCRAFT_PART_INSTALL/*
+
       mv out/* o/
       mv o/* $SNAPCRAFT_PART_INSTALL/
       mv $SNAPCRAFT_PART_INSTALL/JS\ Paint $SNAPCRAFT_PART_INSTALL/jspaint
