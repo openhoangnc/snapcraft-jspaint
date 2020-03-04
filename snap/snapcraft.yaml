@@ -48,8 +48,8 @@ parts:
       VERSION=$(jq . package.json | grep version | cut -d'"' -f4 | sed s'/v//' | head -n 1)
       echo $VERSION
       snapcraftctl set-version "$VERSION"
-      yarn config set proxy $https_proxy
-      yarn config set https-proxy $https_proxy
+      systemctl set-environment http_proxy=$http_proxy; true
+      systemctl set-environment https_proxy=$https_proxy; true
       yarn add electron-packager --dev
       ./node_modules/.bin/electron-packager ./ --electron-version=7.1.14 --asar --overwrite --out=./out
 
