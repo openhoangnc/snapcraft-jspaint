@@ -14,11 +14,7 @@ architectures:
   
 apps:
   jspaint:
-    command: jspaint 
-    # desktop: $SNAP/jspaint.desktop
-    # environment:
-    #   DISABLE_WAYLAND: 1
-    #   GSETTINGS_SCHEMA_DIR: $SNAP/usr/share/glib-2.0/schemas
+    command: jspaint
     plugs:
       - desktop
       - desktop-legacy
@@ -38,8 +34,6 @@ apps:
       - upower-observe
 parts:    
   jspaint:
-    build-environment:
-      - ELECTRON_GET_USE_PROXY: "1"
     plugin: nil
     override-build: |
       set -eu
@@ -56,12 +50,13 @@ parts:
       snapcraftctl set-version "$VERSION"
            
       yarn install
+      yarn global add electron-forge
       yarn run package
 
       mv out/* o/
       mv o/* $SNAPCRAFT_PART_INSTALL/
       mv $SNAPCRAFT_PART_INSTALL/JS\ Paint $SNAPCRAFT_PART_INSTALL/jspaint
-      chmod 4755 $SNAPCRAFT_PART_INSTALL/chrome-sandbox 
+
     build-packages:
       - jq
       - git
