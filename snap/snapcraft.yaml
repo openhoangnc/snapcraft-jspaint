@@ -6,7 +6,7 @@ description: |
 
 base: core18
 grade: stable
-confinement: strict
+confinement: classic
 
 architectures:
   - build-on: [amd64]
@@ -39,7 +39,7 @@ apps:
 parts:    
   jspaint:
     build-environment:
-      - ELECTRON_GET_USE_PROXY: 1
+      - ELECTRON_GET_USE_PROXY: "1"
     plugin: nil
     override-build: |
       set -eu
