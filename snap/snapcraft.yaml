@@ -1,9 +1,9 @@
 name: jspaint
+icon: snap/gui/icon.png
 adopt-info: jspaint
 summary: Classic MS Paint clone with extra features
 description: |
   Classic MS Paint clone with extra features
-
 base: core18
 grade: stable
 confinement: classic
