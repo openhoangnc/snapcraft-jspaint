@@ -38,6 +38,8 @@ apps:
       - upower-observe
 parts:    
   jspaint:
+    build-environment:
+      - ELECTRON_GET_USE_PROXY: 1
     plugin: nil
     override-build: |
       set -eu
