@@ -49,8 +49,10 @@ parts:
       echo $VERSION
       snapcraftctl set-version "$VERSION"
       if [ -n "$http_proxy" ]; then
-        systemctl set-environment http_proxy=$http_proxy || true
-        systemctl set-environment https_proxy=$https_proxy || true
+        export ELECTRON_GET_USE_PROXY=1
+        export GLOBAL_AGENT_ENVIRONMENT_VARIABLE_NAMESPACE=
+        export HTTP_PROXY=$http_proxy
+        export HTTPS_PROXY=$https_proxy
       fi
       yarn add electron-packager --dev
       ./node_modules/.bin/electron-packager ./ --electron-version=7.1.14 --asar --overwrite --out=./out
