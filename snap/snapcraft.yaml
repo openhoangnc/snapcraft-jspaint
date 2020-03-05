@@ -11,9 +11,6 @@ confinement: strict
 apps:
   jspaint:
     command: jspaint
-
-parts:    
-  jspaint:
     plugs:
       - desktop
       - desktop-legacy
@@ -31,6 +28,9 @@ parts:
       - audio-playback
       - screen-inhibit-control
       - upower-observe
+
+parts:    
+  jspaint:
     plugin: nil
     override-build: |
       set -eu
