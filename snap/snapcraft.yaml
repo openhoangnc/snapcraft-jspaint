@@ -6,7 +6,7 @@ description: |
   Classic MS Paint clone with extra features
 base: core18
 grade: stable
-confinement: classic
+confinement: strict
 
 architectures:
   - build-on: [s390x, ppc64el, arm64, armhf, amd64, i386]
@@ -14,23 +14,25 @@ architectures:
 apps:
   jspaint:
     command: jspaint
-    plugs:
-      - desktop
-      - desktop-legacy
-      - wayland
-      - unity7
-      - alsa
-      - avahi-observe
-      - browser-support
-      - camera
-      - cups-control
-      - gsettings
-      - home
-      - network
-      - opengl
-      - audio-playback
-      - screen-inhibit-control
-      - upower-observe
+
+plugs:
+  - desktop
+  - desktop-legacy
+  - wayland
+  - unity7
+  - alsa
+  - avahi-observe
+  - browser-support
+  - camera
+  - cups-control
+  - gsettings
+  - home
+  - network
+  - opengl
+  - audio-playback
+  - screen-inhibit-control
+  - upower-observe
+
 parts:    
   jspaint:
     plugin: nil
