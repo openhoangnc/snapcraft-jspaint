@@ -12,26 +12,25 @@ apps:
   jspaint:
     command: jspaint
 
-plugs:
-  - desktop:
-  - desktop-legacy:
-  - wayland:
-  - unity7:
-  - alsa:
-  - avahi-observe:
-  - browser-support:
-  - camera:
-  - cups-control:
-  - gsettings:
-  - home:
-  - network:
-  - opengl:
-  - audio-playback:
-  - screen-inhibit-control:
-  - upower-observe:
-
 parts:    
   jspaint:
+    plugs:
+      - desktop
+      - desktop-legacy
+      - wayland
+      - unity7
+      - alsa
+      - avahi-observe
+      - browser-support
+      - camera
+      - cups-control
+      - gsettings
+      - home
+      - network
+      - opengl
+      - audio-playback
+      - screen-inhibit-control
+      - upower-observe
     plugin: nil
     override-build: |
       set -eu
