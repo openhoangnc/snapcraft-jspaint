@@ -10,7 +10,7 @@ confinement: strict
 
 apps:
   jspaint:
-    command: jspaint
+    command: bin/desktop-launch jspaint
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
       DISABLE_WAYLAND: 1
