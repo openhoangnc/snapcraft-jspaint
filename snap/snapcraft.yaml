@@ -11,6 +11,9 @@ confinement: strict
 apps:
   jspaint:
     command: jspaint
+    environment:
+      TMPDIR: $XDG_RUNTIME_DIR
+      DISABLE_WAYLAND: 1
     plugs:
       - desktop
       - desktop-legacy
