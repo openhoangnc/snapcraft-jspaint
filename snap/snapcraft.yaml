@@ -70,9 +70,6 @@ parts:
       mv out/* o/
       mv o/* $SNAPCRAFT_PART_INSTALL/
       mv $SNAPCRAFT_PART_INSTALL/JS\ Paint $SNAPCRAFT_PART_INSTALL/jspaint
-      
-      chown root $SNAPCRAFT_PART_INSTALL/chrome-sandbox
-      chmod 4755 $SNAPCRAFT_PART_INSTALL/chrome-sandbox
 
     build-packages:
       - jq
