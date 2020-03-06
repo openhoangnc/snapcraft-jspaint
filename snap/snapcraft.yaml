@@ -58,9 +58,11 @@ parts:
       sed -i -e '/cypress/d' package.json
       sed -i -e '/ cy:/d' package.json
       sed -i -e '/debug/d' package.json
+      sed -i -e '/lint/d' package.json
       sed -i -e '/serve/d' package.json
       sed -i -e '/electron-forge/d' package.json
       sed -i -e '/:NOTE/d' package.json
+      cat package.json | tr '\n' '\r' | sed -e 's/,\r\s*}/\r}/g' | tr '\r' '\n' > package.json.mod && mv package.json.mod package.json
 
       yarn add electron-packager --dev
       ./node_modules/.bin/electron-packager ./ --electron-version=7.1.14 --asar --overwrite --out=./out
@@ -72,6 +74,7 @@ parts:
     build-packages:
       - jq
       - sed
+      - tr
       - git
       - curl
       - unzip
