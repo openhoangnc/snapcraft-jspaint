@@ -74,7 +74,6 @@ parts:
     build-packages:
       - jq
       - sed
-      - tr
       - git
       - curl
       - unzip
